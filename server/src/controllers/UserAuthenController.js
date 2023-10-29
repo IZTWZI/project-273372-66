@@ -37,14 +37,14 @@ module.exports = {
                     email: email
                 }
             })
-            if (user.status != 'active') {
-                return res.status(403).send({
-                    error: 'User no active'
-                })
-            }
             if (!user) {
                 return res.status(403).send({
-                    error: 'User no correct'
+                    error: 'User not correct'
+                })
+            }
+            if (user.status != 'active') {
+                return res.status(403).send({
+                    error: 'User not active'
                 })
             }
             const isPasswordValid = await user.comparePassword(password)

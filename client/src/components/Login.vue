@@ -5,11 +5,11 @@
       <form v-on:submit.prevent="onLogin" class="form">
         <div class="form-group">
           <label for="username" class="form-label">Email</label>
-          <input type="text" id="username" v-model="email" class="form-input">
+          <input type="email" id="username" v-model="email" class="form-input" required>
         </div>
         <div class="form-group">
           <label for="password" class="form-label">Password</label>
-          <input type="password" id="password" v-model="password" class="form-input">
+          <input type="password" id="password" v-model="password" class="form-input" required>
         </div>
         <div class="button-group">
           <button type="submit" class="singin-button">Sing in</button>
