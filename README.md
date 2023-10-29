@@ -2,6 +2,8 @@
 Wongsathon Phandee
 64315056
 
+URL: http://localhost:8080/#/login
+
 สำหรับ login
 
 Email : admin2@gmail.com
