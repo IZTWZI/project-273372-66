@@ -3,7 +3,7 @@
     <h1 class="create-restaurant-heading">Create Restaurant</h1>
     <form v-on:submit.prevent="createRestaurant" class="restaurant-form">
       <div class="form-group">
-        <label for="name">Name:</label>
+        <label for="name">Restaurant Name:</label>
         <input type="text" id="name" v-model="restaurant.name" class="form-input" placeholder="ชื่อร้านอาหาร" required />
       </div>
       <div class="form-group">

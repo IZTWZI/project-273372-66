@@ -3,7 +3,7 @@
     <h1 class="restaurant-details-heading">Restaurant Details</h1>
     <div class="restaurant-details">
       <p class="restaurant-info">Restaurant ID: {{ restaurant.id }}</p>
-      <p class="restaurant-info">Name: {{ restaurant.name }}</p>
+      <p class="restaurant-info">Restaurant Name: {{ restaurant.name }}</p>
       <p class="restaurant-info">Address: {{ restaurant.address }}</p>
       <p class="restaurant-info">Email: {{ restaurant.email }}</p>
       <p class="restaurant-info">Phone Number: {{ restaurant.phoneNumber }}</p>

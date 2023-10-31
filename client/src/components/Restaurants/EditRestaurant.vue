@@ -4,7 +4,7 @@
       <h1 class="edit-restaurant-heading">Edit Restaurant</h1>
       <form v-on:submit.prevent="editRestaurant">
         <div class="form-group">
-          <label for="name">Name:</label>
+          <label for="name">Restaurant Name:</label>
           <input type="text" id="name" placeholder="ชื่อร้านอาหาร" v-model="restaurant.name" required>
         </div>
         <div class="form-group">
@@ -52,7 +52,7 @@
     <div class="l2">
       <div class="current-details">
         <h2>Current Details</h2>
-        <p>Name: {{ restaurant.name }}</p>
+        <p>Restaurant Name: {{ restaurant.name }}</p>
         <p>Address: {{ restaurant.address }}</p>
         <p>Email: {{ restaurant.email }}</p>
         <p>Phone Number: {{ restaurant.phoneNumber }}</p>
