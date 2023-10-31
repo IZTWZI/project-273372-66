@@ -10,10 +10,25 @@ function jwtSignUser(user) {
 module.exports = {
     async singup(req, res) {
         try {
-            const { email } = req.body
+            if (!req.body.name || req.body.name.trim() === "") {
+                return res.status(400).send({
+                  error: 'user first name is required'
+                });
+              }
+              if (!req.body.lastname || req.body.lastname.trim() === "") {
+                return res.status(400).send({
+                  error: 'user last name is required'
+                });
+              }
+              if (!req.body.password || req.body.password.trim() === "") {
+                return res.status(400).send({
+                  error: 'restaurant name is required'
+                });
+              }
+
             const user = await User.findOne({
                 where: {
-                    email: email
+                    email: req.body.email
                 }
             })
             if (user) {

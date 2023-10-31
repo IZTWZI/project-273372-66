@@ -47,6 +47,8 @@
         <button type="submit" class="create-button">Create Restaurant</button>
         <button v-on:click="navigateTo('/restaurants/')" class="back-button">Back</button>
       </div>
+      <br>
+        <div class="error" v-if="error">{{ error }}</div>
     </form>
   </div>
 </template>
@@ -67,18 +69,31 @@ export default {
         menuType: '',
         services: '',
         promotion: '',
-      }
+      },
+      error: null
     }
   },
   methods: {
     async createRestaurant() {
       try {
-        await RestaurantService.post(this.restaurant)
+        const response = await RestaurantService.post({
+        name: this.restaurant.name,
+        address: this.restaurant.address,
+        email: this.restaurant.email,
+        phoneNumber: this.restaurant.phoneNumber,
+        timeOn: this.restaurant.timeOn,
+        timeOff: this.restaurant.timeOff,
+        menuType: this.restaurant.menuType,
+        services: this.restaurant.services,
+        promotion: this.restaurant.promotion
+        })
+        console.log(response)
         this.$router.push({
           name: 'restaurants'
         })
       } catch (error) {
         console.log(error)
+        this.error = error.response.data.error
       }
     },
     navigateTo(route) {
@@ -153,4 +168,9 @@ export default {
 
 .back-button:hover {
   background-color: #999;
-}</style>
+}
+
+.error {
+  color: red;
+}
+</style>

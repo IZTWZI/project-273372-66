@@ -28,14 +28,16 @@
                     <button type="submit" class="edit-button">Edit User</button>
                     <button v-on:click="navigateTo('/users/')" class="back-button">Back</button>
                 </div>
+                <br>
+                <div class="error" v-if="error">{{ error }}</div>
             </form>
         </div>
         <hr>
         <div class="l2">
             <div class="current-details">
                 <h2>Current Details</h2>
-                <p>Name: {{ user.name }}</p>
-                <p>Address: {{ user.lastname }}</p>
+                <p>First Name: {{ user.name }}</p>
+                <p>Last Name: {{ user.lastname }}</p>
                 <p>Email: {{ user.email }}</p>
                 <p>Statis: {{ user.status }}</p>
             </div>
@@ -54,18 +56,21 @@ export default {
                 lastname: '',
                 email: '',
                 status: 'active',
-            }
+            },
+            error: null
         }
     },
     methods: {
         async editUser() {
             try {
-                await UsersService.put(this.user)
+                const response = await UsersService.put(this.user)
+                console.log(response)
                 this.$router.push({
                     name: 'users'
                 })
             } catch (error) {
                 console.log(error)
+                this.error = error.response.data.error
             }
         },
 
@@ -204,5 +209,8 @@ input {
 .current-details {
     margin-top: 20px;
     text-align: left;
+}
+.error {
+  color: red;
 }
 </style>

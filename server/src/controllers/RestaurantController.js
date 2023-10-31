@@ -14,6 +14,25 @@ module.exports = {
   // create restaurant
   async create(req, res) {
     try {
+
+      const { name } = req.body
+
+      if (!name || name.trim() === "") {
+        return res.status(400).send({
+          error: 'restaurant name is required'
+        });
+      }
+      
+      const checkName = await Restaurant.findOne({
+          where: {
+              name: name
+          }
+      })
+      if (checkName) {
+          return res.status(403).send({
+              error: 'restaurant name already exists'
+          })
+      }
       const restaurants = await Restaurant.create(req.body);
       res.send(restaurants.toJSON());
     } catch (err) {

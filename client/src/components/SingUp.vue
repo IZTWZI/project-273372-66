@@ -4,7 +4,7 @@
       <h1 class="SingUp-heading">SingUp!</h1>
       <form v-on:submit.prevent="createUser" class="form">
         <div class="form-group">
-          <label for="name" class="form-label">Name</label>
+          <label for="name" class="form-label">First Name</label>
           <input type="text" id="name" v-model="user.name" class="form-input" required>
         </div>
         <div class="form-group">
@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
           <label for="email" class="form-label">Email</label>
-          <input type="text" id="email" v-model="user.email" class="form-input" required>
+          <input type="email" id="email" v-model="user.email" class="form-input" required>
         </div>
         <div class="form-group">
           <label for="password" class="form-label">Password</label>
@@ -59,13 +59,7 @@ export default {
         return;
       }
       try {
-        const response = await AuthenService.singup({
-          name: this.user.name,
-          lastname: this.user.lastname,
-          email: this.user.email,
-          password: this.user.password,
-          status: this.user.status,
-        })
+        const response = await AuthenService.singup(this.user)
         console.log(response)
 
         this.$router.push({

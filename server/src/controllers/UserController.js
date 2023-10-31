@@ -25,6 +25,18 @@ module.exports = {
   // edit user, suspend, active
   async put(req, res) {
     try {
+
+      if (!req.body.name || req.body.name.trim() === "") {
+        return res.status(400).send({
+          error: 'user first name is required'
+        });
+      }
+      if (!req.body.lastname || req.body.lastname.trim() === "") {
+        return res.status(400).send({
+          error: 'user last name is required'
+        });
+      }
+
       await User.update(req.body, {
         where: {
           id: req.params.userId,
@@ -66,6 +78,6 @@ module.exports = {
     try {
       const user = await User.findByPk(req.params.userId);
       res.send(user);
-    } catch (err) {}
+    } catch (err) { }
   },
 };
